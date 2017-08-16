@@ -16,11 +16,12 @@ class App extends React.Component {
         <div className='react-web-app'>
           <h1>React Web APP</h1>
           <div className='breadcrumbs'>
-            <Link to='/'>users</Link>
+            <Link to='/'>users</Link> |
+            <Link to='/posts'>posts</Link>
           </div>
 
           <Route path='/' component={Users} />
-          <Route path='users/:id/posts' component={Posts} />
+          <Route path='/posts' component={Posts} />
         </div>
       </Router>
     )
