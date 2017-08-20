@@ -10,9 +10,12 @@ const users = handleActions({
   )
 }, [])
 
-function posts (state = [], action) {
-  return state
-}
+const posts = handleActions({
+  [actions.fetchPosts]: (state, action) => (null),
+  [actions.fetchPostsSuccess]: (state, action) => (
+    action.payload
+  )
+}, [])
 
 function currentPost (state = {}, action) {
   return state

@@ -4,11 +4,20 @@ import axios from 'axios'
 import * as actions from './actions'
 
 function * fetchUsers () {
-  const users = yield call(axios.get, 'https://jsonplaceholder.typicode.com/users')
+  const url = 'https://jsonplaceholder.typicode.com/users'
+  const response = yield call(axios.get, url)
 
-  yield put(actions.fetchUsersSuccess(users.data))
+  yield put(actions.fetchUsersSuccess(response.data))
+}
+
+function * fetchPosts (action) {
+  const url = `https://jsonplaceholder.typicode.com/posts?userId=${action.payload.userId}`
+  const response = yield call(axios.get, url)
+
+  yield put(actions.fetchPostsSuccess(response.data))
 }
 
 export default function * rootSaga () {
   yield takeLatest(actions.fetchUsers().type, fetchUsers)
+  yield takeLatest(actions.fetchPosts().type, fetchPosts)
 }

@@ -16,8 +16,7 @@ class App extends React.Component {
         <div className='react-web-app'>
           <h1>React Web APP</h1>
           <div className='breadcrumbs'>
-            <Link to='/'>users</Link> |
-            <Link to='/posts'>posts</Link>
+            <Link to='/'>users</Link>
           </div>
 
           <Route exact path='/' component={Users} />
