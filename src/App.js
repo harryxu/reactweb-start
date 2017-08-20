@@ -12,7 +12,7 @@ class App extends React.Component {
   render () {
     return (
       // 如果网站部署在一个子目录中，修改basename来设置路由的开始路径
-      <Router>
+      <Router basename='/'>
         <div className='react-web-app'>
           <h1>React Web APP</h1>
           <div className='breadcrumbs'>
@@ -20,7 +20,7 @@ class App extends React.Component {
             <Link to='/posts'>posts</Link>
           </div>
 
-          <Route path='/' component={Users} />
+          <Route exact path='/' component={Users} />
           <Route path='/posts' component={Posts} />
         </div>
       </Router>

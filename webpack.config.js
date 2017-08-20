@@ -47,6 +47,7 @@ if (__DEV__) {
   config.devServer = {
     contentBase: './public',
     port: 9008,
+    hot: false,
     historyApiFallback: true
   }
 }
