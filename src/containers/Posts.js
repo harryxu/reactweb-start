@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import queryString from 'query-string'
+import { Link } from 'react-router-dom'
 
 import { fetchPosts } from '../actions'
 
@@ -19,11 +20,15 @@ class Posts extends Component {
 
     return (
       <div className='posts'>
-        <h2>Posts</h2>
-        { posts === null ? '正在获取文章列表...'
-          : posts.map(post => (
-            <li key={post.id}>{post.title}</li>
-          )) }
+        <div className='posts-list'>
+          <h2>Posts</h2>
+          {posts === null ? '正在获取文章列表...'
+            : posts.map(post => (
+              <li key={post.id}>
+                <Link to={`/posts/${post.id}`}>{post.title}</Link>
+              </li>
+            ))}
+        </div>
       </div>
     )
   }

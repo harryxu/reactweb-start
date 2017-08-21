@@ -20,9 +20,6 @@ Redux没有强制要求action的结构，但是遵循一个通用的标准有利
 
 个人觉得 虽然redux-thunk相对简单，容易理解，但是随着程序越来越复杂，异步action代码也会越来越多，action层面的代码就会推积复杂起来。
 
-使用saga很好的保持了action层代码的简单，通过Side Effects的机制来监听发出的action并作出所需的异步操作，更好的保持了代码的可读性与可维护性。
-
-
-
+使用saga很好的保持了action层代码的简单，通过Side Effects的机制来监听发出的action并作出所需的异步操作，代码比较可读，方便维护。
 
 ## 路由： [React Router](https://reacttraining.com/react-router/) - [github](https://github.com/ReactTraining/react-router)
