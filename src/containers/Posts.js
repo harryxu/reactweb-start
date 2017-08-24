@@ -18,6 +18,7 @@ class Posts extends Component {
 
   render () {
     const { posts } = this.props
+    const uid = this.getUserId()
 
     return (
       <div className='posts'>
@@ -26,7 +27,7 @@ class Posts extends Component {
           {posts === null ? '正在获取文章列表...'
             : posts.map(post => (
               <li key={post.id}>
-                <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                <Link to={`/posts/${post.id}?uid=${uid}`}>{post.title}</Link>
               </li>
             ))}
         </div>
