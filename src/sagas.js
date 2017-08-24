@@ -17,7 +17,15 @@ function * fetchPosts (action) {
   yield put(actions.fetchPostsSuccess(response.data))
 }
 
+function * fetchSinglePost (action) {
+  const url = `https://jsonplaceholder.typicode.com/posts/${action.payload.postId}`
+  const response = yield call(axios.get, url)
+
+  yield put(actions.fetchSinglePostSuccess(response.data))
+}
+
 export default function * rootSaga () {
   yield takeLatest(actions.fetchUsers().type, fetchUsers)
   yield takeLatest(actions.fetchPosts().type, fetchPosts)
+  yield takeLatest(actions.fetchSinglePost().type, fetchSinglePost)
 }

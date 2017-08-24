@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import queryString from 'query-string'
-import { Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 
 import { fetchPosts } from '../actions'
+import Post from './Post'
 
 class Posts extends Component {
   componentDidMount () {
@@ -29,6 +30,8 @@ class Posts extends Component {
               </li>
             ))}
         </div>
+
+        <Route path='/posts/:id' component={Post} />
       </div>
     )
   }

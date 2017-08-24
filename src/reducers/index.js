@@ -17,9 +17,12 @@ const posts = handleActions({
   )
 }, [])
 
-function currentPost (state = {}, action) {
-  return state
-}
+const currentPost = handleActions({
+  [actions.fetchSinglePost]: (state, action) => (null),
+  [actions.fetchSinglePostSuccess]: (state, action) => (
+    action.payload
+  )
+}, null)
 
 const rootReducer = combineReducers({
   users,
