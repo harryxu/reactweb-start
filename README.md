@@ -12,8 +12,7 @@ Redux没有强制要求action的结构，但是遵循一个通用的标准有利
 
 ###  不可变数据操作: [immutable.js](https://facebook.github.io/immutable-js/)
 
-当然一些非常简单的场景可以直接使用原生的  `Ojbect` , 大多数既然用到了React的应用，想必都会复杂到一定程度，使用immutable.js 也简化了reducer中的对象拷贝、结构、合并之类的代码。
-
+当然一些非常简单的场景可以直接使用原生的 `Ojbect`、`Array` 等 , 大多数既然用到了React的应用，想必都会复杂到一定程度，使用immutable.js 也简化了reducer中的对象拷贝、解构、合并之类的代码。
 
 
 ### 异步操作/异步action：[redux-saga](https://redux-saga.js.org/) - [github](https://github.com/redux-saga/redux-saga/)
