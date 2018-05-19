@@ -10,6 +10,7 @@ const __PROD__ = __ENV__ === 'production'
 const publicPath = path.resolve(__dirname, 'public')
 
 const config = {
+  mode: __PROD__ ? 'production' : 'development',
   entry: {
     index: './src/index.js'
   },
