@@ -35,22 +35,16 @@ config.module.rules.push({
   exclude: [/node_modules/]
 })
 
-if (__PROD__) {
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-      drop_console: true
-    }
-  }))
-}
-
 if (__DEV__) {
+
   config.devServer = {
     contentBase: './public',
-    port: 9008,
-    hot: false,
+    hot: true,
     historyApiFallback: true
   }
+
+  config.entry['rc_hot_patch'] = 'react-hot-loader/patch'
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
 module.exports = config

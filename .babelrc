@@ -1,3 +1,12 @@
 {
-  "presets": ["es2016", "env", "react", "stage-2"]
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      }
+    }],
+    "react",
+    "stage-2"
+  ],
+  "plugins": [ "react-hot-loader/babel" ]
 }

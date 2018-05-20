@@ -5,7 +5,7 @@ import { applyMiddleware, createStore, compose } from 'redux'
 import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
 
-import rootReducer from './reducers'
+import rootReducer from './reducers/index'
 import rootSaga from './sagas'
 import App from './App'
 
@@ -15,9 +15,24 @@ const initState = {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const sagaMiddleware = createSagaMiddleware()
-const store = createStore(rootReducer, initState, composeEnhancers(
-  applyMiddleware(sagaMiddleware)
-))
+
+function configureStore(initialState) {
+  const store = createStore(rootReducer, initState, composeEnhancers(
+    applyMiddleware(sagaMiddleware)
+  ))
+
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('./reducers', () => {
+      const nextRootReducer = require('./reducers/index');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+
+  return store;
+}
+
+const store = configureStore(initState)
 
 sagaMiddleware.run(rootSaga)
 
@@ -27,3 +42,7 @@ render(
   </Provider>,
   document.getElementById('app')
 )
+
+if (module.hot) {
+  module.hot.accept()
+}
